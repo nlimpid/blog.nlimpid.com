@@ -2,7 +2,13 @@ import Layout from '../../components/layout'
 import Head from 'next/head'
 import { getAllPostIds, getPostData } from '../../lib/posts'
 import Date from '../../components/date'
-import utilStyles from '../../styles/utils.module.css'
+import ReactMarkdown from 'react-markdown'
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { tomorrow } from "react-syntax-highlighter/dist/cjs/styles/prism"
+import gfm from 'remark-gfm'
+
+
+
 
 export async function getStaticPaths() {
     const paths = getAllPostIds()
@@ -21,6 +27,19 @@ export async function getStaticProps({ params }) {
     }
 }
 
+const CodeBlock = ({ language, value }) => {
+    return (
+        <SyntaxHighlighter
+            language={language}
+            style={tomorrow}
+            wrapLines={true}
+            showLineNumbers={true}
+        >
+            {value}
+        </SyntaxHighlighter>
+    )
+}
+
 export default function Post({ postData }) {
     return (
         <Layout>
@@ -28,12 +47,16 @@ export default function Post({ postData }) {
                 <title>{postData.title}</title>
             </Head>
             <article>
-                <h1 className={utilStyles.headingXl}>{postData.title}</h1>
-                <div className={utilStyles.lightText}>
+                <h1 className="mt-6">{postData.title}</h1>
+                <div className="text-gray-500">
                     <Date dateString={postData.date} />
                 </div>
-                <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+                <ReactMarkdown
+                    children={postData.content}
+                    remarkPlugins={[gfm]}
+                />
+                {/* <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} /> */}
             </article>
-        </Layout>
+        </Layout >
     )
 }
