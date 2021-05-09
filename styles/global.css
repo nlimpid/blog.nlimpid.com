@@ -11,3 +11,28 @@
       @apply text-xl;
     }
   }
+
+  .big-red-text {
+    @apply text-4xl text-red-400 font-bold;
+  }
+
+.markdown_div h2 {
+    @apply text-4xl text-red-400 font-bold;
+}
+
+
+/*.markdown_div pre {*/
+/*    @apply rounded-md bg-gray-800 py-3 px-4 overflow-x-auto*/
+/*}*/
+
+/*.markdown_div pre code {*/
+/*    @apply text-gray-200*/
+/*}*/
+
+.markdown_div a {
+    @apply text-blue-300;
+}
+
+.markdown_div a:hover {
+    @apply underline;
+}

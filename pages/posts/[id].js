@@ -5,9 +5,6 @@ import Date from '../../components/date'
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { tomorrow } from "react-syntax-highlighter/dist/cjs/styles/prism"
-import gfm from 'remark-gfm'
-
-
 
 
 export async function getStaticPaths() {
@@ -27,35 +24,18 @@ export async function getStaticProps({ params }) {
     }
 }
 
-const CodeBlock = ({ language, value }) => {
-    return (
-        <SyntaxHighlighter
-            language={language}
-            style={tomorrow}
-            wrapLines={true}
-            showLineNumbers={true}
-        >
-            {value}
-        </SyntaxHighlighter>
-    )
-}
-
 export default function Post({ postData }) {
     return (
         <Layout>
             <Head>
                 <title>{postData.title}</title>
             </Head>
-            <article>
+            <article >
                 <h1 className="mt-6">{postData.title}</h1>
-                <div className="text-gray-500">
+                <div className="text-gray-500 divide-y divide-gray-200 xl:pb-0 xl:col-span-3 xl:row-span-2">
                     <Date dateString={postData.date} />
                 </div>
-                <ReactMarkdown
-                    children={postData.content}
-                    remarkPlugins={[gfm]}
-                />
-                {/* <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} /> */}
+                <div  className="prose lg:prose-xl " dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
             </article>
         </Layout >
     )

@@ -10,7 +10,7 @@ export const siteTitle = 'Just Blog'
 
 export default function Layout({ children, home }) {
   return (
-    <div className={styles.container}>
+    <div className="max-w-prose mx-auto">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -26,7 +26,7 @@ export default function Layout({ children, home }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header className={styles.header}>
+      <header className="flex flex-col items-center">
         {home ? (
           <>
             <Image
@@ -63,7 +63,7 @@ export default function Layout({ children, home }) {
       </header>
       <main>{children}</main>
       {!home && (
-        <div className={styles.backToHome}>
+        <div className="mx-3">
           <Link href="/">
             <a>← Back to home</a>
           </Link>
