@@ -56,7 +56,7 @@ func ReverseRune(input string) string {
 
 
 
-| 国家编码 | Emoji | 码位              | 国家名称           |
+| 国家编码 | Emoji | 码位  | 国家名称  |
 |------|-------|-----------------|----------------|
 | BG   | 🇧🇬  | U+1F1E7 U+1F1EC | Bulgaria       |
 | GB   | 🇬🇧  | U+1F1E7 U+1F1EC | United Kingdom |
@@ -75,7 +75,7 @@ func ReverseGraph(person: String) -> String {
     print(reversed)
 }
 ```
-```angular2html
+```
 们我321🇬🇧
 ```
 

@@ -5,7 +5,7 @@ import Date from '../../components/date'
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { tomorrow } from "react-syntax-highlighter/dist/cjs/styles/prism"
-
+import "highlight.js/styles/tomorrow-night-bright.css"
 
 export async function getStaticPaths() {
     const paths = getAllPostIds()
